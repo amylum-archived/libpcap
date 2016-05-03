@@ -7,7 +7,7 @@ BUILD_DIR = /tmp/$(PACKAGE)-build
 RELEASE_DIR = /tmp/$(PACKAGE)-release
 RELEASE_FILE = /tmp/$(PACKAGE).tar.gz
 PATH_FLAGS = --prefix=/usr
-CFLAGS = -static -static-libgcc -Wl,-static --enable-ipv6 --with-libnl
+CFLAGS = -static -static-libgcc -Wl,-static
 
 PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/libpcap-//')
 PATCH_VERSION = $$(cat version)
@@ -29,9 +29,8 @@ container:
 build: submodule
 	rm -rf $(BUILD_DIR) $(DEP_DIR)
 	cp -R upstream $(BUILD_DIR)
-	cd $(BUILD_DIR) && ./autogen.sh
 	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS)' ./configure $(PATH_FLAGS)
-	cd $(BUILD_DIR) && make install
+	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) install
 	mkdir -p $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)
 	cp $(BUILD_DIR)/LICENSE $(RELEASE_DIR)/usr/share/licenses/$(PACKAGE)/LICENSE
 	cd $(RELEASE_DIR) && tar -czvf $(RELEASE_FILE) *
