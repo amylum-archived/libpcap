@@ -7,7 +7,7 @@ BUILD_DIR = /tmp/$(PACKAGE)-build
 RELEASE_DIR = /tmp/$(PACKAGE)-release
 RELEASE_FILE = /tmp/$(PACKAGE).tar.gz
 PATH_FLAGS = --prefix=/usr
-CFLAGS = -static -static-libgcc -Wl,-static
+CFLAGS = -static -static-libgcc -Wl,-static -I$(DEP_DIR)/usr/include
 
 PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/libpcap-//')
 PATCH_VERSION = $$(cat version)
@@ -28,6 +28,8 @@ container:
 
 build: submodule
 	rm -rf $(BUILD_DIR) $(DEP_DIR)
+	mkdir -p $(DEP_DIR)/usr/include/
+	cp -R /usr/include/{linux,asm,asm-generic} $(DEP_DIR)/usr/include/
 	cp -R upstream $(BUILD_DIR)
 	cd $(BUILD_DIR) && CC=musl-gcc CFLAGS='$(CFLAGS)' ./configure $(PATH_FLAGS)
 	cd $(BUILD_DIR) && make DESTDIR=$(RELEASE_DIR) install
