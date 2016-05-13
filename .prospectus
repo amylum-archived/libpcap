@@ -1,8 +1,9 @@
 item do
   expected do
-    github_tag
-    repo 'the-tcpdump-group/libpcap'
-    regex /^libpcap-(.*)$/
+    url_xpath
+    url 'http://www.tcpdump.org/'
+    xpath '//*[@id="content"]/div[3]/div/ul/li[2]/a[1]'
+    regex /^libpcap-(.*)\.tar\.gz$/
   end
 
   actual do
