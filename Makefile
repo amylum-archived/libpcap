@@ -7,7 +7,7 @@ BUILD_DIR = /tmp/$(PACKAGE)-build
 RELEASE_DIR = /tmp/$(PACKAGE)-release
 RELEASE_FILE = /tmp/$(PACKAGE).tar.gz
 PATH_FLAGS = --prefix=/usr
-CFLAGS = -static -static-libgcc -Wl,-static -I$(DEP_DIR)/usr/include
+CFLAGS = -I$(DEP_DIR)/usr/include
 
 PACKAGE_VERSION = $$(git --git-dir=upstream/.git describe --tags | sed 's/libpcap-//')
 PATCH_VERSION = $$(cat version)
