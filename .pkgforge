@@ -1,0 +1,23 @@
+name 'libpcap'
+org 'amylum'
+
+deps(
+  'linux-api-headers': '4.8-rc6-2'
+)
+
+configure_flags(
+  prefix: '/usr'
+)
+
+cflags
+harden
+
+build do
+  configure
+  make
+  install
+end
+
+test do
+  # TODO: add tests
+end

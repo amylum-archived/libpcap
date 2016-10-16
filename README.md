@@ -1,6 +1,8 @@
 libpcap
 ==========
 
+[![Build Status](https://img.shields.io/circleci/project/amylum/libpcap/master.svg)](https://circleci.com/gh/amylum/libpcap)
+[![GitHub release](https://img.shields.io/github/release/amylum/libpcap.svg)](https://github.com/amylum/libpcap/releases)
 [![BSD Licensed](http://img.shields.io/badge/license-BSD-green.svg)](https://tldrlegal.com/license/bsd-3-clause-license-(revised))
 
 Package repo for [libpcap](http://www.tcpdump.org/)
