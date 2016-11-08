@@ -2,7 +2,7 @@ name 'libpcap'
 org 'amylum'
 
 deps(
-  'linux-api-headers': '4.9-rc3-2'
+  'linux-api-headers': '4.9-rc4-1'
 )
 
 configure_flags(
