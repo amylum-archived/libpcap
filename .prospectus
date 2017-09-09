@@ -6,10 +6,10 @@ my_slug = pkgforge.org + '/' + pkgforge.name
 
 item do
   expected do
-    url_xpath
-    url 'http://www.tcpdump.org/'
-    xpath '//*[@id="content"]/div[3]/div/ul[2]/li[1]/a[1]'
-    regex /^libpcap-(.*)\.tar\.gz$/
+    github_tag
+    repo 'the-tcpdump-group/libpcap'
+    regex /^libpcap-(.*)$/
+    filter /^libpcap-(.*)$/
   end
 
   actual do
