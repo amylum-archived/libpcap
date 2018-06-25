@@ -8,8 +8,8 @@ item do
   expected do
     github_tag
     repo 'the-tcpdump-group/libpcap'
-    regex /^libpcap-(.*)$/
-    filter /^libpcap-(.*)$/
+    regex /^libpcap-([\d.]+)$/
+    filter /^libpcap-([\d.]+)$/
   end
 
   actual do
